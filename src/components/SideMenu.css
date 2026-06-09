@@ -51,3 +51,35 @@
   box-shadow: -5px -5px 15px rgba(225,225,225,0.1), 5px 5px 15px rgba(0,0,0,0.35);
 }
 
+.sideMenu .social {
+  position:absolute;
+  bottom:50px;
+  display: flex;
+  gap:20px;
+  transition:0.5s;
+  align-items:center;
+  list-style:none;
+}
+
+.sideMenu .social li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.5em;
+  transition:0.3s;
+}
+
+.sideMenu .social li a:hover {
+  color: var(--second);
+}
+.sideMenu .social li .share{
+  background: var(--second);
+  padding:10px;
+  border-radius:50%;
+  transition:0.3s;
+  width:35px;
+  height:35px;
+}
+
+.sideMenu .social li .share:hover {
+  background: var(--primary);
+}
