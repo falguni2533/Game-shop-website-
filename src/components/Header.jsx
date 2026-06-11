@@ -2,10 +2,10 @@ import React from 'react';
 import './Header.css';
 import userImg from '../images/user.jpg';
 
-function Header() {
+function Header({toggleActive}) {
   return (
     <header>
-        <a href="#" className="menu">
+        <a href="#" className="menu" onClick={toggleActive}>
             <i className="bi bi-sliders"></i>
         </a>
         <div className="userItems">

@@ -27,3 +27,8 @@ main {
     border-radius: 30px;
     transition:1s;
 }
+.banner.active{
+    width:93%;
+    transition:1s;
+    position: relative;
+}
