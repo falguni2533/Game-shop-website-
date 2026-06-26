@@ -1,7 +1,6 @@
 .swiper{
     width:90%;
     padding-bottom: 30px;
-    padding-top: 10px;
 }
 .swiper-slide{
     width: 520px;
@@ -37,4 +36,83 @@
     object-fit: cover;
     object-position: center;
     border-radius: 30px !important;
+}
+
+.swiper-button-next,
+ .swiper-button-prev{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    bottom: 0 !important;
+}
+.swiper-button-next::after,
+ .swiper-button-prev::after{
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+.gameSlider .content{
+    position: absolute;
+    bottom: 20px;
+    z-index: 1000;
+    width: 60%;
+    left:20px;
+    display: grid;
+    gap: 10px;
+}
+.gameSlider .content h2{
+    font-size: 3rem;
+    font-family: 'Bauhaus 93';
+}
+
+.gameSlider .content p{
+    font-size: 0.8rem;
+    color: #ebebeb;
+}
+.gameSlider .content .buttons{
+    display: inline-flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.gameSlider .content .buttons a{
+    text-decoration: none;
+    color: #fff;
+    text-transform: uppercase;
+    
+}
+.gameSlider .content .buttons a.orderBtn{
+    padding: 8px 16px;
+    background-color: var(--second);
+    border-radius: 10px;
+    
+}
+.gameSlider .content .buttons a.playBtn{
+    border-radius: 50px;
+    height: 50px;
+    width:50px;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+}
+.playBtn .play{
+    display: block;
+
+}
+
+.playBtn .pause {
+    display: none;
+}
+
+.playBtn.active .pause{
+    display: block;
+}
+
+.playBtn.active .play{
+    display: none;
 }
