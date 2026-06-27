@@ -105,14 +105,39 @@
 
 }
 
-.playBtn .pause {
+.playBtn .pause{
     display: none;
 }
 
-.playBtn.active .pause{
+.swiper-slide.swiper-slide-active .playBtn.active .play{
+    display: none;
+}
+
+.swiper-slide.swiper-slide-active .playBtn.active .pause {
     display: block;
 }
 
-.playBtn.active .play{
-    display: none;
+.swiper-slide .video iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 85%;
+    height: 75%;
+    border-radius:  0 30px 0 30px !important;
+    border: 5px solid transparent;
+    background: var(--second);
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.1),
+                5px 5px 15px rgba(0, 0, 0, 0.35);
+    z-index: 1100;
+    visibility: hidden;
+    opacity: 0;   
+    transform: scale(0);
+    transition: 0.5s;
+    transform-origin: top right;       
+}
+
+.swiper-slide.swiper-slide-active .video.active iframe{
+    visibility: visible;
+    opacity: 1;
+    transform:scale(1);
 }
