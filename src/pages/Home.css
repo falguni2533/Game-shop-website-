@@ -1,0 +1,20 @@
+section.home.sectionTitle {
+    text-transform: uppercase;
+}
+
+.viewMore{
+    text-decoration: none;
+    color: #ffffff;
+    font: size 1.2em;
+    transition:0.3s;
+    display: block;
+    text-align: right;
+    width: 100%;
+     margin-top: -30px;
+
+}
+
+
+.viewMore:hover{
+    color: var(--second);
+}
