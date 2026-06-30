@@ -21,7 +21,7 @@ function Main() {
       .catch(e => console.log(e.message));
   };
    useEffect(()=>{
-      fetchData();
+      fetchData(hello);
    },[]);
 
    return(
