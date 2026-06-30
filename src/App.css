@@ -20,8 +20,10 @@
  }
 
  body {
+  /* position: relative;
+  background: var(--bgcolor); */
   position: relative;
-  background: var(--bgcolor);
+  background: #192938 !important;
   font-family:'Roboto', sans-serif;
   width: 100%;
   min-height: 100vh;
