@@ -39,8 +39,8 @@
 } 
  
 
-.gameCard .like.active{
-    color: var(--second);
+.gameCard .like:hover{
+    color: red;
 }
 
 .gameCard span{
