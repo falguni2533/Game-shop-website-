@@ -2,25 +2,27 @@
   height: 100%;
   padding: 30px;
   border: 1px solid rgba(0,0,0,0.1);
-  border-radius:30px;
-  box-shadow: -5px -5px 15px rgba(225,225,225,0.1), 5px 5px 15px rgba(0,0,0,0.35);
+  border-radius: 30px;
+  box-shadow: -5px -5px 15px rgba(225,225,225,0.1),
+              5px 5px 15px rgba(0,0,0,0.35);
   background: var(--bg-color);
   transition: 1s;
   display: flex;
   flex-direction: column;
+  position: relative; /* Added */
 }
 
 .sideMenu .logo {
   font-family: 'Bauhaus 93';
-  position:relative;
+  position: relative;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap:15px;
+  gap: 15px;
   font-size: 3.5em;
   font-weight: 600;
   color: #ffffff;
-  letter-spacing:1px;
+  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -28,85 +30,107 @@
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap:15px;
-  list-style:none;
+  gap: 15px;
+  list-style: none;
 }
 
 .sideMenu .nav li a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.2em;
-  letter-spacing:1px;
+  letter-spacing: 1px;
   display: inline-flex;
   align-items: center;
-  gap:25px;
+  gap: 25px;
   background: var(--bg-color);
-  border-radius:20px;
-  padding:10px 20px;
-  border-radius:20px;
-  transition:0.5s;
+  padding: 10px 20px;
+  border-radius: 20px;
+  transition: 0.5s;
 }
+
 .sideMenu .nav li a:hover,
 .sideMenu .nav li a.active {
-  box-shadow: -5px -5px 15px rgba(225,225,225,0.1), 5px 5px 15px rgba(0,0,0,0.35);
+  box-shadow: -5px -5px 15px rgba(225,225,225,0.1),
+              5px 5px 15px rgba(0,0,0,0.35);
 }
 
 .sideMenu .social {
-  position:absolute;
-  bottom:50px;
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
   display: flex;
-  gap:20px;
-  transition:0.5s;
-  align-items:center;
-  list-style:none;
+  align-items: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sideMenu .social li {
+  width: 30px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .sideMenu .social li a {
   text-decoration: none;
   color: #ffffff;
   font-size: 1.5em;
-  transition:0.3s;
+  transition: 0.3s;
 }
 
 .sideMenu .social li a:hover {
   color: var(--second);
 }
-.sideMenu .social li .share{
+
+.sideMenu .social li .share {
   background: var(--second);
-  padding:10px;
-  border-radius:50%;
-  transition:0.3s;
-  width:35px;
-  height:35px;
+  padding: 10px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  transition: 0.3s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.sideMenu.social li .share:hover {
+/* Fixed selector */
+.sideMenu .social li .share:hover {
   background: var(--primary);
 }
 
- .sideMenu.active {
+.sideMenu.active {
   width: 7%;
-  transition: 1s;
   overflow: hidden;
   align-items: center;
   transition: 1s;
- }
+}
 
-  .sideMenu.active .brand,
-  .sideMenu.active .navName {
-    display:none;
-  }
+.sideMenu.active .brand,
+.sideMenu.active .navName {
+  display: none;
+}
 
-  .sideMenu.active .nav li a {
-      font-size: 1.2em;
-    }
+.sideMenu.active .nav li a {
+  font-size: 1.2em;
+  justify-content: center;
+  padding: 2px;
+  gap: 0px;
+}
 
-    .sideMenu.active .social{
-      padding: 0;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      display: flex;
-      gap: 10px;
+.sideMenu.active .social {
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30px;
 
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0px;
+  padding: 0;
+}
