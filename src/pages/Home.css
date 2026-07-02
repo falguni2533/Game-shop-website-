@@ -1,6 +1,9 @@
-section.home.sectionTitle {
+.section-title{
     text-transform: uppercase;
+    color: #fff !important;
+    font-size: 1.8em;
 }
+
 
 .viewMore{
     text-decoration: none;
@@ -10,10 +13,8 @@ section.home.sectionTitle {
     display: block;
     text-align: right;
     width: 100%;
-     margin-top: -30px;
-
+    
 }
-
 
 .viewMore:hover{
     color: var(--second);
