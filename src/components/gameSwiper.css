@@ -65,6 +65,8 @@
 .gameSlider .content h2{
     font-size: 3rem;
     font-family: 'Bauhaus 93';
+    color: #ffffff !important;
+    font-weight: 700;
 }
 
 .gameSlider .content p{

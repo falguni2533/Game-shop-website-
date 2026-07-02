@@ -11,7 +11,7 @@ function GameRating({ rating }) {
         for(let i=0; i<rating; i++){
             star.push(i);
         }
-        return stars;
+        return star;
     };
 
     useEffect(()=>{
@@ -20,8 +20,8 @@ function GameRating({ rating }) {
 
 
   return <div className="gameRating">
-    {stars.map((star, index)=>{
-        <i key={index} className="bi bi-star-fill"></i>;
+    {stars.map((star, index) =>{
+    return <i key={index} className="bi bi-star-fill"></i>;
     })}
   </div>
 }

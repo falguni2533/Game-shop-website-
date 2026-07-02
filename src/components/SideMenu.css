@@ -9,7 +9,7 @@
   transition: 1s;
   display: flex;
   flex-direction: column;
-  position: relative; /* Added */
+  position: relative; 
 }
 
 .sideMenu .logo {
@@ -112,6 +112,7 @@
 .sideMenu.active .brand,
 .sideMenu.active .navName {
   display: none;
+  
 }
 
 .sideMenu.active .nav li a {

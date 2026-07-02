@@ -1,0 +1,18 @@
+.gameRating{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 6px 0;
+}
+
+.gameRating i{
+    color:var(--second);
+    font-size: 1rem;
+    transition: 0.3s;
+}
+
+.gameRating i:hover{
+    transform: scale(1.15);
+    color: goldenrod;
+    
+}

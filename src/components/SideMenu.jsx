@@ -6,6 +6,16 @@ import socialData from "../data/socialData";
 
 function SideMenu({active}) {
   const [navData, setNavData] = useState(navListData);
+
+  const handleNavOnClick=(id)=>{
+    const newNavData = navData.map(nav=>{
+      nav.active=false;
+      if(nav._id === id) nav.active=true;
+      return nav;
+  })
+  setNavData(newNavData);
+}
+
   return (
     <div className={`sideMenu ${active ? 'active' : undefined}`}>
       <a href="#" className="logo">
@@ -14,7 +24,7 @@ function SideMenu({active}) {
       </a>
       <ul className="nav">
         {navData.map(item => (
-          <NavListItem key={item.id} item={item} />
+          <NavListItem key={item.id} item={item} onNavClick={handleNavOnClick} />
         ))}
       </ul>
       <ul className="social">
