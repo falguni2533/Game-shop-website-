@@ -2,18 +2,19 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 
 /**
- * Genre Schema
- * ------------
- * Represents a game genre (e.g. Action, Adventure, RPG, Strategy).
+ * Publisher Schema
+ * ----------------
+ * Represents a game publisher
+ * (e.g. Rockstar Games, Ubisoft, Electronic Arts, Riot Games).
  */
-const genreSchema = new mongoose.Schema(
+const publisherSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Genre name is required"],
+      required: [true, "Publisher name is required"],
       unique: true,
       trim: true,
-      maxlength: [50, "Genre name cannot exceed 50 characters"],
+      maxlength: [100, "Publisher name cannot exceed 100 characters"],
     },
 
     slug: {
@@ -30,14 +31,14 @@ const genreSchema = new mongoose.Schema(
 /**
  * Pre-save Middleware
  * --------------------
- * Automatically generates a unique slug from the genre name.
+ * Automatically generates a unique slug from the publisher name.
  *
  * Example:
- * RPG      -> rpg
- * RPG      -> rpg-1
- * RPG      -> rpg-2
+ * Rockstar Games        -> rockstar-games
+ * Rockstar Games        -> rockstar-games-1
+ * Rockstar Games        -> rockstar-games-2
  */
-genreSchema.pre("save", async function (next) {
+publisherSchema.pre("save", async function (next) {
   try {
     if (!this.isModified("name")) return next();
 
@@ -49,10 +50,10 @@ genreSchema.pre("save", async function (next) {
     let slug = baseSlug;
     let counter = 1;
 
-    const Genre = this.constructor;
+    const Publisher = this.constructor;
 
     while (
-      await Genre.exists({
+      await Publisher.exists({
         slug,
         _id: { $ne: this._id },
       })
@@ -68,5 +69,5 @@ genreSchema.pre("save", async function (next) {
   }
 });
 
-// Export Genre Model
-module.exports = mongoose.model("Genre", genreSchema);
+// Export Publisher Model
+module.exports = mongoose.model("Publisher", publisherSchema);
