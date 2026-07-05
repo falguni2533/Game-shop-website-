@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 
 /**
+ * wow i am going good! proud of mee!
  * Genre Schema
  * ------------
  * Represents a game genre (e.g. Action, Adventure, RPG, Strategy).
