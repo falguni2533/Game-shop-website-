@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const app = express();
 
 // Middleware
+// done postman testing for register, login, logout, and profile routes. All working fine.
 app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
