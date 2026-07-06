@@ -45,9 +45,17 @@ const registerUser = async (req, res) => {
       email: user.email,
       role: user.role,
     });
-  } catch (error) {
-    res.status(500).json({ message: "Server error", error: error.message });
-  }
+//   
+} catch (error) {
+  console.error("REGISTER ERROR:");
+  console.error(error);
+
+  return res.status(500).json({
+    message: "Server error",
+    error: error.message,
+    stack: error.stack,
+  });
+}
 };
 
 // @desc    Authenticate user and get token
@@ -137,6 +145,7 @@ const getUserProfile = async (req, res) => {
     res.status(500).json({ message: "Server error", error: error.message });
   }
 };
+
 
 // Export all controller functions
 module.exports = {
