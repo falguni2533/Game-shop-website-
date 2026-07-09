@@ -17,43 +17,43 @@
  * app.use('/api/products', productRoutes);
  * app.use(errorHandler); // must come after all routes
  */
- 
-/**
- * errorHandler
- * @param {Error} err   - The error object forwarded via next(error)
- * @param {Object} req  - Express request object
- * @param {Object} res  - Express response object
- * @param {Function} next - Express next function (required for Express
- *                          to recognize this as error-handling middleware,
- *                          even though it isn't called here)
- */
+
 const errorHandler = (err, req, res, next) => {
-  // Sometimes an error occurs after res.statusCode was already set to 200
-  // (the default success code) by Express before the error was thrown.
-  // In that case, override it to 500 (Internal Server Error).
-  // Otherwise, respect whatever status code was already set
-  // (e.g., a controller may have set 404 before throwing "Not Found").
-  void next; // eslint-disable-line no-unused-vars
-  const statusCode = res.statusCode === 200 ? 500 : res.statusCode;
- 
-  // Explicitly set the response status code.
-  res.status(statusCode);
- 
-  // Send a consistent, structured JSON error response to the client.
-  res.json({
-    // Always false, so the frontend can reliably check `if (!data.success)`.
+  // Express requires the 'next' parameter for error middleware
+  // even if it isn't used.
+  void next;
+
+  // If no status code has been set, default to 500.
+  let statusCode = res.statusCode === 200 ? 500 : res.statusCode;
+
+  // Handle invalid MongoDB ObjectId
+  if (err.name === "CastError") {
+    statusCode = 404;
+    err.message = "Resource not found";
+  }
+
+  // Handle Mongoose validation errors
+  if (err.name === "ValidationError") {
+    statusCode = 400;
+    err.message = Object.values(err.errors)
+      .map((error) => error.message)
+      .join(", ");
+  }
+
+  // Handle duplicate key errors (unique fields)
+  if (err.code === 11000) {
+    statusCode = 409;
+    err.message = "Duplicate field value entered";
+  }
+
+  res.status(statusCode).json({
     success: false,
- 
-    // Human-readable error message. Falls back to a generic message
-    // if the error object doesn't have one.
-    message: err.message || 'Internal Server Error',
- 
-    // Only expose the stack trace during development/debugging.
-    // In production, hide internal implementation details from
-    // clients for security reasons — return null instead.
-    stack: process.env.NODE_ENV !== 'production' ? err.stack : null,
+    message: err.message || "Internal Server Error",
+    stack:
+      process.env.NODE_ENV === "production"
+        ? null
+        : err.stack,
   });
 };
- 
-// Export using CommonJS so it can be imported with require() elsewhere.
+
 module.exports = errorHandler;
