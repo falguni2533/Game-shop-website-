@@ -3,7 +3,6 @@ const express = require("express");
 const {
   getCategories,
   getCategoryById,
-  getCategoryBySlug,
   createCategory,
   updateCategory,
   deleteCategory,
@@ -27,7 +26,6 @@ router.get("/", getCategories);
 // @route   GET /slug/:slug
 // @desc    Get category by slug
 // @access  Public
-router.get("/slug/:slug", getCategoryBySlug);
 
 // @route   GET /:id
 // @desc    Get category by ID

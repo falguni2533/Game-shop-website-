@@ -3,7 +3,6 @@ const express = require("express");
 const {
   getPublishers,
   getPublisherById,
-  getPublisherBySlug,
   createPublisher,
   updatePublisher,
   deletePublisher,
@@ -23,11 +22,6 @@ const router = express.Router();
 // @desc    Get all publishers
 // @access  Public
 router.get("/", getPublishers);
-
-// @route   GET /slug/:slug
-// @desc    Get publisher by slug
-// @access  Public
-router.get("/slug/:slug", getPublisherBySlug);
 
 // @route   GET /:id
 // @desc    Get publisher by ID

@@ -3,7 +3,6 @@ const express = require("express");
 const {
   getGenres,
   getGenreById,
-  getGenreBySlug,
   createGenre,
   updateGenre,
   deleteGenre,
@@ -23,11 +22,6 @@ const router = express.Router();
 // @desc    Get all genres
 // @access  Public
 router.get("/", getGenres);
-
-// @route   GET /slug/:slug
-// @desc    Get genre by slug
-// @access  Public
-router.get("/slug/:slug", getGenreBySlug);
 
 // @route   GET /:id
 // @desc    Get genre by ID

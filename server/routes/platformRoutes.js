@@ -3,7 +3,6 @@ const express = require("express");
 const {
   getPlatforms,
   getPlatformById,
-  getPlatformBySlug,
   createPlatform,
   updatePlatform,
   deletePlatform,
@@ -24,10 +23,6 @@ const router = express.Router();
 // @access  Public
 router.get("/", getPlatforms);
 
-// @route   GET /slug/:slug
-// @desc    Get platform by slug
-// @access  Public
-router.get("/slug/:slug", getPlatformBySlug);
 
 // @route   GET /:id
 // @desc    Get platform by ID
