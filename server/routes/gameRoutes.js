@@ -7,6 +7,7 @@ const {
   createGame,
   updateGame,
   deleteGame,
+  addReview,
 } = require("../controllers/gameController");
 
 const { protect } = require("../middlewares/authMiddleware");
@@ -28,6 +29,11 @@ router.get("/", getGames);
 // @desc    Get game by slug
 // @access  Public
 router.get("/slug/:slug", getGameBySlug);
+
+// @route   POST /review/:id
+// @desc    Add a review to a game
+// @access  Private
+router.post("/review/:id", protect, addReview);
 
 // @route   GET /:id
 // @desc    Get game by ID
