@@ -1,5 +1,5 @@
 import React from 'react'
-import './Bag.css'
+import './bag.css'
 
 function Bag({ games, reference }) {
   return  (

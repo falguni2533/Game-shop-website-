@@ -1,5 +1,5 @@
 import React from 'react'
-import './Categories.css'
+import './categories.css'
 
 function Categories({ games, reference }) {
   return  <section id="categories" className="categories" ref={reference}>

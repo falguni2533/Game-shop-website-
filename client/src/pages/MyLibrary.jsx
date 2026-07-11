@@ -1,5 +1,5 @@
 import React from 'react'
-import './MyLibrary.css'
+import './myLibrary.css'
 
 function MyLibrary({  games, reference }) {
   return (
