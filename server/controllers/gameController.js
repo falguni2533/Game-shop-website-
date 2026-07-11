@@ -295,6 +295,54 @@ const deleteGame = asyncHandler(async (req, res) => {
 });
 
 /* ============================================================
+                    ADD REVIEW
+============================================================ */
+
+const addReview = asyncHandler(async (req, res) => {
+  const { rating, comment } = req.body;
+
+  const game = await Game.findById(req.params.id);
+
+  if (!game) {
+    res.status(404);
+    throw new Error("Game not found");
+  }
+
+  // Check if user has already reviewed this game
+  const alreadyReviewed = game.reviews.find(
+    (review) => review.user.toString() === req.user._id.toString()
+  );
+
+  if (alreadyReviewed) {
+    res.status(400);
+    throw new Error("You have already reviewed this game");
+  }
+
+  const review = {
+    user: req.user._id,
+    name: req.user.name,
+    rating: Number(rating),
+    comment,
+  };
+
+  game.reviews.push(review);
+
+  game.totalReviews = game.reviews.length;
+
+  game.averageRating =
+    game.reviews.reduce((acc, item) => acc + item.rating, 0) /
+    game.reviews.length;
+
+  await game.save();
+
+  res.status(201).json({
+    success: true,
+    message: "Review added successfully",
+    data: game.reviews,
+  });
+});
+
+/* ============================================================
                     EXPORT CONTROLLERS
 ============================================================ */
 
@@ -305,4 +353,5 @@ module.exports = {
   createGame,
   updateGame,
   deleteGame,
+  addReview,
 };

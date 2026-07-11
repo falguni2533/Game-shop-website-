@@ -123,6 +123,36 @@ const gameSchema = new mongoose.Schema(
       default: 0,
       min: 0,
     },
+    
+    reviews: [
+    {
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "User is required"],
+    },
+
+    name: {
+      type: String,
+      required: [true, "Reviewer name is required"],
+      trim: true,
+    },
+
+    rating: {
+      type: Number,
+      required: [true, "Rating is required"],
+      min: [1, "Rating must be at least 1"],
+      max: [5, "Rating cannot exceed 5"],
+    },
+
+    comment: {
+      type: String,
+      required: [true, "Review comment is required"],
+      trim: true,
+      maxlength: [500, "Comment cannot exceed 500 characters"],
+    },
+  },
+],
 
     featured: {
       type: Boolean,
