@@ -1,40 +1,54 @@
 const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
-// Middleware to protect routes by verifying JWT from HTTP-only cookie
+// Protect routes
 const protect = async (req, res, next) => {
   try {
-    // Read the JWT from the HTTP-only cookie
-    const token = req.cookies.jwt;
+    let token;
 
-    // If no token is found, deny access
-    if (!token) {
-      return res.status(401).json({ message: "Not authorized, no token" });
+    // 1. Check Authorization Header (Bearer Token)
+    if (
+      req.headers.authorization &&
+      req.headers.authorization.startsWith("Bearer")
+    ) {
+      token = req.headers.authorization.split(" ")[1];
     }
 
-    // Verify the token using the JWT secret
+    // 2. If no Bearer Token, check Cookie
+    if (!token && req.cookies?.jwt) {
+      token = req.cookies.jwt;
+    }
+
+    // 3. No token found
+    if (!token) {
+      return res.status(401).json({
+        message: "Not authorized, no token",
+      });
+    }
+
+    // 4. Verify JWT
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // Find the user by decoded ID, excluding the password field
+    // 5. Get user
     const user = await User.findById(decoded.id).select("-password");
 
-    // If user no longer exists, deny access
     if (!user) {
-      return res.status(401).json({ message: "Not authorized, user not found" });
+      return res.status(401).json({
+        message: "User not found",
+      });
     }
 
-    // Attach the user object to the request
+    // 6. Attach user to request
     req.user = user;
 
-    // Proceed to the next middleware/controller
     next();
   } catch (error) {
-    // Handle invalid or expired tokens
-    return res.status(401).json({ message: "Not authorized, token failed" });
+    return res.status(401).json({
+      message: "Not authorized, token failed",
+    });
   }
 };
 
-// Export the middleware
 module.exports = {
   protect,
 };
