@@ -26,6 +26,10 @@ const protect = async (req, res, next) => {
       });
     }
 
+    console.log("Authorization Header:", req.headers.authorization);
+    console.log("Cookie:", req.cookies);
+    console.log("Token:", token);
+
     // 4. Verify JWT
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
@@ -43,11 +47,20 @@ const protect = async (req, res, next) => {
 
     next();
   } catch (error) {
-    return res.status(401).json({
-      message: "Not authorized, token failed",
-    });
-  }
+  console.log("JWT ERROR:", error);
+
+  return res.status(401).json({
+    message: "Not authorized, token failed",
+  });
+}
 };
+  
+//   } catch (error) {
+//     return res.status(401).json({
+//       message: "Not authorized, token failed",
+//     });
+//   }
+// };
 
 module.exports = {
   protect,

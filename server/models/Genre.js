@@ -2,10 +2,7 @@ const mongoose = require("mongoose");
 const slugify = require("slugify");
 
 /**
- * wow i am going good! proud of mee!
  * Genre Schema
- * ------------
- * Represents a game genre (e.g. Action, Adventure, RPG, Strategy).
  */
 const genreSchema = new mongoose.Schema(
   {
@@ -29,45 +26,32 @@ const genreSchema = new mongoose.Schema(
 );
 
 /**
- * Pre-save Middleware
- * --------------------
- * Automatically generates a unique slug from the genre name.
- *
- * Example:
- * RPG      -> rpg
- * RPG      -> rpg-1
- * RPG      -> rpg-2
+ * Auto Generate Slug
  */
-genreSchema.pre("save", async function (next) {
-  try {
-    if (!this.isModified("name")) return next();
+genreSchema.pre("save", async function () {
+  if (!this.isModified("name")) return;
 
-    const baseSlug = slugify(this.name, {
-      lower: true,
-      strict: true,
-    });
+  const baseSlug = slugify(this.name, {
+    lower: true,
+    strict: true,
+  });
 
-    let slug = baseSlug;
-    let counter = 1;
+  let slug = baseSlug;
+  let counter = 1;
 
-    const Genre = this.constructor;
+  const Genre = this.constructor;
 
-    while (
-      await Genre.exists({
-        slug,
-        _id: { $ne: this._id },
-      })
-    ) {
-      slug = `${baseSlug}-${counter}`;
-      counter++;
-    }
-
-    this.slug = slug;
-    next();
-  } catch (error) {
-    next(error);
+  while (
+    await Genre.exists({
+      slug,
+      _id: { $ne: this._id },
+    })
+  ) {
+    slug = `${baseSlug}-${counter}`;
+    counter++;
   }
+
+  this.slug = slug;
 });
 
-// Export Genre Model
 module.exports = mongoose.model("Genre", genreSchema);
