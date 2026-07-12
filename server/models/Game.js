@@ -196,8 +196,8 @@ gameSchema.set("toObject", { virtuals: true });
 gameSchema.index({ title: "text", shortDescription: "text" });
 
 // Auto-generate slug from title before saving, and keep it unique
-gameSchema.pre("save", async function (next) {
-  if (!this.isModified("title")) return next();
+gameSchema.pre("save", async function () {
+  if (!this.isModified("title")) return;
 
   const baseSlug = slugify(this.title, { lower: true, strict: true });
   let slug = baseSlug;
@@ -210,7 +210,6 @@ gameSchema.pre("save", async function (next) {
   }
 
   this.slug = slug;
-  next();
 });
 
 module.exports = mongoose.model("Game", gameSchema);

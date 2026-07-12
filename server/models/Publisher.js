@@ -29,44 +29,30 @@ const publisherSchema = new mongoose.Schema(
 );
 
 /**
- * Pre-save Middleware
- * --------------------
- * Automatically generates a unique slug from the publisher name.
- *
- * Example:
- * Rockstar Games        -> rockstar-games
- * Rockstar Games        -> rockstar-games-1
- * Rockstar Games        -> rockstar-games-2
+ * Auto-generate unique slug
  */
-publisherSchema.pre("save", async function (next) {
-  try {
-    if (!this.isModified("name")) return next();
+publisherSchema.pre("save", async function () {
+  if (!this.isModified("name")) return;
 
-    const baseSlug = slugify(this.name, {
-      lower: true,
-      strict: true,
-    });
+  const baseSlug = slugify(this.name, {
+    lower: true,
+    strict: true,
+  });
 
-    let slug = baseSlug;
-    let counter = 1;
+  let slug = baseSlug;
+  let counter = 1;
 
-    const Publisher = this.constructor;
-
-    while (
-      await Publisher.exists({
-        slug,
-        _id: { $ne: this._id },
-      })
-    ) {
-      slug = `${baseSlug}-${counter}`;
-      counter++;
-    }
-
-    this.slug = slug;
-    next();
-  } catch (error) {
-    next(error);
+  while (
+    await this.constructor.exists({
+      slug,
+      _id: { $ne: this._id },
+    })
+  ) {
+    slug = `${baseSlug}-${counter}`;
+    counter++;
   }
+
+  this.slug = slug;
 });
 
 // Export Publisher Model
