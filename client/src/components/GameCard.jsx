@@ -7,9 +7,9 @@ function GameCard({game}) {
     <div className="col-xl-3 col-lg-4 col-md-6">
        <div className="gameCard">
        <img src={game.img} alt={game.title} className="img-fluid" />
-       <button className="like">
+       <a className="like" href="#">
         <i className="bi bi-heart-fill"></i>
-        </button>
+        </a>
         <div className="gameFeature">
         <span className="gameType">{game.level}</span>
         <GameRating  rating={game.rating}/>
