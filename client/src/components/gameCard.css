@@ -116,7 +116,7 @@
     height: 350px;
     border: 1px solid rgba(0,0,0,0.1);
     border-radius: 20px;
-    background: var(--bgColor);
+    background: var(--bgcolor);
     box-shadow: -5px -5px 15px rgba(255,255,255,0.1),
                 5px 5px 15px rgba(0,0,0,0.35);
 }

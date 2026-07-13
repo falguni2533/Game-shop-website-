@@ -10,7 +10,8 @@ import './gameSwiper.css';
 import {EffectCoverflow, Navigation , Autoplay} from 'swiper/modules';
 function GameSwiper({games}) {
 
- const [active, setActive] = useState(false);
+//  const [active, setActive] = useState(false);
+ active ? "active" : undefined
  const handleToggleVideo=()=>{
   setActive(!active);
  };
@@ -20,7 +21,7 @@ function GameSwiper({games}) {
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
-        loops={true}
+        loop={true}
         navigation={true}
         slidesPerView={'auto'}
         coverflowEffect={{
@@ -42,7 +43,7 @@ function GameSwiper({games}) {
        { games.map(game => ( 
             <SwiperSlide key={game.id}>
                <div className="gameSlider">
-              <img src={game.img} alt="Game Image" />
+            <img src={game.img} alt={game.title} />
               <div className={`video ${active ? 'active' : undefined}`}>
                 <iframe
                   width="520"
@@ -57,17 +58,15 @@ function GameSwiper({games}) {
                 <h2>{game.title}</h2>
                 <p>{game.description}</p>
                 <div className="buttons">
-                  <a href="#" className="orderBtn">Order Now
-                  </a>
-                  <a href="#" className={`playBtn ${active ? 'active' : undefined}`} onClick={handleToggleVideo}>
-
+                  <button className="orderBtn">Buy Now</button>
+                  <button className={`playBtn ${active ? 'active' : undefined}`} onClick={handleToggleVideo}>
                     <span className="pause">
                       <i className="bi bi-pause-fill"></i>
                     </span>
                     <span className="play">
                       <i className="bi bi-play-fill"></i>
                     </span>
-                  </a>
+                  </button>
                 </div>
                 </div>
               
