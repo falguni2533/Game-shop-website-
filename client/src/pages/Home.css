@@ -19,3 +19,37 @@
 .viewMore:hover{
     color: var(--second);
 }
+
+/* ================= HOME PAGE ================= */
+
+.section-space{
+    margin-top: 60px;
+}
+
+.section-title{
+    color: #ffffff;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.viewMore{
+    color: #ffffff;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.viewMore:hover{
+    color: var(--second);
+}
+
+@media (max-width:768px){
+
+    .section-space{
+        margin-top:40px;
+    }
+
+    .viewMore{
+        margin-top:10px;
+    }
+
+}
