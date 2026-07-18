@@ -1,0 +1,10 @@
+.games {
+  padding: 40px 0;
+  min-height: 100vh;
+}
+
+.section-subtitle {
+  color: #9ca3af;
+  margin-bottom: 30px;
+  font-size: 1rem;
+}

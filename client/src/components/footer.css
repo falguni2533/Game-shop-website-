@@ -1,0 +1,105 @@
+.footer{
+    margin-top:80px;
+    padding:60px 40px 20px;
+
+    background:var(--bgcolor);
+
+    border-top:1px solid rgba(255,255,255,0.08);
+}
+
+.footerLogo{
+    color:#ffffff;
+    font-size:2rem;
+    font-family:'Bauhaus 93';
+    margin-bottom:20px;
+}
+
+.footerText{
+    color:#bdbdbd;
+    line-height:1.8;
+    font-size:.95rem;
+}
+
+.footerHeading{
+    color:#ffffff;
+    margin-bottom:20px;
+    font-weight:600;
+    text-transform:uppercase;
+}
+
+.footerLinks{
+    list-style:none;
+    padding:0;
+}
+
+.footerLinks li{
+    margin-bottom:12px;
+}
+
+.footerLinks a{
+    color:#bdbdbd;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.footerLinks a:hover{
+    color:var(--second);
+    padding-left:6px;
+}
+
+.socialIcons{
+    display:flex;
+    gap:15px;
+}
+
+.socialIcons a{
+    width:42px;
+    height:42px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    color:#ffffff;
+
+    font-size:1.2rem;
+
+    transition:.3s;
+}
+
+.socialIcons a:hover{
+    background:var(--second);
+    transform:translateY(-5px);
+}
+
+.footer hr{
+    margin:40px 0 20px;
+    border-color:rgba(255,255,255,.1);
+}
+
+.copyright{
+    text-align:center;
+    color:#9e9e9e;
+    font-size:.9rem;
+}
+
+.copyright span{
+    color:var(--second);
+    font-weight:600;
+}
+
+@media(max-width:992px){
+
+    .footer{
+        text-align:center;
+    }
+
+    .socialIcons{
+        justify-content:center;
+    }
+
+}

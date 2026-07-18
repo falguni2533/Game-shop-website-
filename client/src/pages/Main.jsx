@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./main.css";
 
+
 import SideMenu from "../components/SideMenu";
 import Header from "../components/Header";
 
 import Home from "./Home";
+import Games from "./Games";
 import Categories from "./Categories";
 import MyLibrary from "./MyLibrary";
 import Bag from "./Bag";
@@ -12,8 +14,10 @@ import Bag from "./Bag";
 function Main() {
   const [active, setActive] = useState(false);
   const [games, setGames] = useState([]);
+  const [activePage, setActivePage] = useState("home");
 
   const homeRef = useRef();
+  const gamesRef = useRef();
   const categoriesRef = useRef();
   const bagRef = useRef();
   const libraryRef = useRef();
@@ -23,6 +27,11 @@ function Main() {
       name: "home",
       ref: homeRef,
       active: true,
+    },
+    {
+       name: "games",
+       ref: gamesRef,
+       active: false,
     },
     {
       name: "categories",
@@ -60,16 +69,46 @@ function Main() {
 
   return (
     <main>
-      <SideMenu active={active} />
+      {/* <SideMenu active={active} /> */}
+      <SideMenu
+  active={active}
+  activePage={activePage}
+  setActivePage={setActivePage}
+/>
 
       <div className={`banner ${active ? "active" : ""}`}>
         <Header toggleActive={handleToggleActive} />
 
         <div className="container-fluid">
-          <Home games={games} reference={homeRef} />
-          <Categories games={games} reference={categoriesRef} />
-          <MyLibrary games={games} reference={libraryRef} />
-          <Bag games={games} reference={bagRef} />
+          <Home
+  games={games}
+  reference={homeRef}
+  active={activePage === "home"}
+/>
+
+<Games
+  games={games}
+  reference={gamesRef}
+  active={activePage === "games"}
+/>
+
+<Categories
+  games={games}
+  reference={categoriesRef}
+  active={activePage === "categories"}
+/>
+
+<MyLibrary
+  games={games}
+  reference={libraryRef}
+  active={activePage === "library"}
+/>
+
+<Bag
+  games={games}
+  reference={bagRef}
+  active={activePage === "bag"}
+/>
         </div>
       </div>
     </main>
