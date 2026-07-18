@@ -51,8 +51,10 @@ section::-webkit-scrollbar{
 
 }
 section.active{
-    top: 100px;
+    top:100px;
     opacity:1;
-    height: auto;
-    overflow-y: visible;
+    height:calc(100% - 100px);
+    overflow-y:auto;
+    padding-bottom:40px;
 }
+   
