@@ -675,7 +675,7 @@
 }
 
 
-/* @media(max-width:576px){
+@media(max-width:576px){
 
   .game-title {
     font-size:2rem;
@@ -701,4 +701,4 @@
     padding:18px;
   }
 
-} */
+} 
