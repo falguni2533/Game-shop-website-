@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import GameRating from "../components/GameRating";
-import GameCard from "../components/GameCard";
 import "./GameDetails.css";
 
 function GameDetails() {
@@ -28,8 +27,8 @@ function GameDetails() {
 
   if (!game) {
     return (
-      <div className="loading">
-        <h2>Loading...</h2>
+      <div className="game-loading">
+        <h2>Loading Game...</h2>
       </div>
     );
   }
@@ -42,10 +41,15 @@ function GameDetails() {
     )
     .slice(0, 4);
 
+  const finalPrice = (
+    game.price -
+    game.price * game.discount
+  ).toFixed(2);
+
   return (
     <div className="game-details">
 
-      {/* Back Button */}
+      {/* ================= Back Button ================= */}
 
       <button
         className="back-btn"
@@ -55,22 +59,20 @@ function GameDetails() {
         Back to Store
       </button>
 
-      {/* ================= HERO ================= */}
+      {/* ================= Hero Section ================= */}
 
-      <div className="hero-section">
+      <section className="hero-section">
 
-        {/* Left */}
+        {/* Left Image */}
 
         <div className="hero-image">
-
           <img
             src={game.img}
             alt={game.title}
           />
-
         </div>
 
-        {/* Right */}
+        {/* Right Content */}
 
         <div className="hero-content">
 
@@ -108,13 +110,7 @@ function GameDetails() {
 
             <div className="price-row">
 
-              <h2>
-                $
-                {(
-                  game.price -
-                  game.price * game.discount
-                ).toFixed(2)}
-              </h2>
+              <h2>${finalPrice}</h2>
 
               {game.discount > 0 && (
                 <>
@@ -152,37 +148,31 @@ function GameDetails() {
 
         </div>
 
-      </div>
+      </section>
 
-      {/* ================= ABOUT ================= */}
+      {/* ================= About Game ================= */}
 
-      <div className="details-card">
+      <section className="game-description">
 
         <h2>
           <i className="bi bi-controller"></i>
-          About Game
+          About This Game
         </h2>
 
         <p>
-          {game.description}
-        </p>
-
-      </div>
-          {/* Game Description */}
-      <section className="game-description">
-        <h2>About This Game</h2>
-
-        <p>
           {game.description ||
-            "Experience an amazing adventure with stunning visuals, immersive gameplay, and exciting challenges. Discover new worlds and unforgettable moments."}
+            "Experience an unforgettable adventure with immersive gameplay, stunning visuals, challenging missions, and an exciting world waiting to be explored."}
         </p>
+
       </section>
+            {/* ================= Features ================= */}
 
-
-      {/* Game Features */}
       <section className="game-features">
 
-        <h2>Features</h2>
+        <h2>
+          <i className="bi bi-stars"></i>
+          Game Features
+        </h2>
 
         <div className="feature-grid">
 
@@ -190,34 +180,35 @@ function GameDetails() {
             <i className="bi bi-controller"></i>
             <h4>Immersive Gameplay</h4>
             <p>
-              Enjoy smooth controls and engaging gameplay mechanics.
+              Master responsive controls and enjoy engaging combat,
+              exploration, and challenging missions.
             </p>
           </div>
 
-
           <div className="feature-card">
-            <i className="bi bi-people"></i>
+            <i className="bi bi-people-fill"></i>
             <h4>Multiplayer</h4>
             <p>
-              Play with friends and compete with players worldwide.
+              Team up with friends or compete against players around
+              the world in exciting online battles.
             </p>
           </div>
 
-
           <div className="feature-card">
-            <i className="bi bi-stars"></i>
-            <h4>High Quality Graphics</h4>
+            <i className="bi bi-badge-hd-fill"></i>
+            <h4>Next-Gen Graphics</h4>
             <p>
-              Beautiful environments with detailed visuals.
+              Experience breathtaking environments, realistic lighting,
+              and smooth high-quality visuals.
             </p>
           </div>
 
-
           <div className="feature-card">
-            <i className="bi bi-trophy"></i>
+            <i className="bi bi-trophy-fill"></i>
             <h4>Achievements</h4>
             <p>
-              Unlock rewards and complete exciting missions.
+              Unlock achievements, complete missions,
+              and collect exclusive rewards.
             </p>
           </div>
 
@@ -225,134 +216,134 @@ function GameDetails() {
 
       </section>
 
+      {/* ================= System Requirements ================= */}
 
-
-      {/* System Requirements */}
       <section className="requirements">
 
-        <h2>System Requirements</h2>
+        <h2>
+          <i className="bi bi-pc-display"></i>
+          System Requirements
+        </h2>
 
+        <div className="requirement-card">
 
-        <div className="requirement-box">
+          <div className="requirement-column">
 
+            <h3>Minimum</h3>
 
-          <div>
-            <h4>Minimum</h4>
+            <div>
+              <strong>OS</strong>
+              <span>
+                {game.systemRequirements?.minimum?.os || "Windows 10"}
+              </span>
+            </div>
 
-            <p>
-              <strong>OS:</strong>{" "}
-              {game.systemRequirements?.minimum?.os || "Windows 10"}
-            </p>
+            <div>
+              <strong>Processor</strong>
+              <span>
+                {game.systemRequirements?.minimum?.processor ||
+                  "Intel Core i5"}
+              </span>
+            </div>
 
+            <div>
+              <strong>RAM</strong>
+              <span>
+                {game.systemRequirements?.minimum?.ram || "8 GB"}
+              </span>
+            </div>
 
-            <p>
-              <strong>Processor:</strong>{" "}
-              {game.systemRequirements?.minimum?.processor ||
-                "Intel Core i5"}
-            </p>
-
-
-            <p>
-              <strong>RAM:</strong>{" "}
-              {game.systemRequirements?.minimum?.ram ||
-                "8 GB"}
-            </p>
-
-
-            <p>
-              <strong>Graphics:</strong>{" "}
-              {game.systemRequirements?.minimum?.graphics ||
-                "GTX 1060"}
-            </p>
-
-          </div>
-
-
-
-          <div>
-
-            <h4>Recommended</h4>
-
-            <p>
-              <strong>OS:</strong>{" "}
-              {game.systemRequirements?.recommended?.os ||
-                "Windows 11"}
-            </p>
-
-
-            <p>
-              <strong>Processor:</strong>{" "}
-              {game.systemRequirements?.recommended?.processor ||
-                "Intel Core i7"}
-            </p>
-
-
-            <p>
-              <strong>RAM:</strong>{" "}
-              {game.systemRequirements?.recommended?.ram ||
-                "16 GB"}
-            </p>
-
-
-            <p>
-              <strong>Graphics:</strong>{" "}
-              {game.systemRequirements?.recommended?.graphics ||
-                "RTX 3060"}
-            </p>
-
+            <div>
+              <strong>Graphics</strong>
+              <span>
+                {game.systemRequirements?.minimum?.graphics ||
+                  "GTX 1060"}
+              </span>
+            </div>
 
           </div>
 
+          <div className="requirement-column">
+
+            <h3>Recommended</h3>
+
+            <div>
+              <strong>OS</strong>
+              <span>
+                {game.systemRequirements?.recommended?.os || "Windows 11"}
+              </span>
+            </div>
+
+            <div>
+              <strong>Processor</strong>
+              <span>
+                {game.systemRequirements?.recommended?.processor ||
+                  "Intel Core i7"}
+              </span>
+            </div>
+
+            <div>
+              <strong>RAM</strong>
+              <span>
+                {game.systemRequirements?.recommended?.ram || "16 GB"}
+              </span>
+            </div>
+
+            <div>
+              <strong>Graphics</strong>
+              <span>
+                {game.systemRequirements?.recommended?.graphics ||
+                  "RTX 3060"}
+              </span>
+            </div>
+
+          </div>
 
         </div>
 
       </section>
 
-
-
-
-      {/* Trailer Section */}
+      {/* ================= Trailer ================= */}
 
       <section className="trailer-section">
 
-        <h2>Game Trailer</h2>
-
+        <h2>
+          <i className="bi bi-play-circle-fill"></i>
+          Official Trailer
+        </h2>
 
         <div className="trailer-box">
 
-          <button>
+          <button className="play-btn">
             <i className="bi bi-play-fill"></i>
           </button>
 
+          <p>Watch Gameplay Trailer</p>
 
         </div>
 
-
       </section>
 
-
-
-
-
-      {/* Reviews */}
+      {/* ================= Reviews ================= */}
 
       <section className="reviews">
 
-        <h2>Player Reviews</h2>
-
+        <h2>
+          <i className="bi bi-chat-square-text-fill"></i>
+          Player Reviews
+        </h2>
 
         <div className="review-card">
-
 
           <div className="review-user">
 
             <img
               src="/assets/user.png"
-              alt="user"
+              alt="User"
             />
 
-
             <div>
+
               <h4>Alex Gamer</h4>
 
               <div className="stars">
@@ -361,80 +352,68 @@ function GameDetails() {
 
             </div>
 
-
           </div>
 
-
           <p>
-            Amazing game with incredible graphics and gameplay.
-            Totally worth playing!
+            Amazing game with beautiful graphics, smooth controls,
+            and an incredible storyline. Definitely one of the best
+            games I've played this year!
           </p>
-
 
         </div>
 
-
       </section>
 
-
-
-
-
-
-      {/* Related Games */}
+      {/* ================= Related Games ================= */}
 
       <section className="related-games">
 
-
         <h2>
+          <i className="bi bi-joystick"></i>
           More Like This
         </h2>
 
-
         <div className="related-grid">
 
+          {relatedGames.map((item) => (
 
-          {
-            games
-              .filter(item => item._id !== game._id)
-              .slice(0,4)
-              .map(item => (
+            <div
+              className="related-card"
+              key={item._id}
+              onClick={() => navigate(`/games/${item._id}`)}
+            >
 
-                <div 
-                  className="related-card"
-                  key={item._id}
-                >
+              <img
+                src={item.img}
+                alt={item.title}
+              />
 
-                  <img
-                    src={item.img}
-                    alt={item.title}
-                  />
+              <div className="related-content">
 
+                <h4>{item.title}</h4>
 
-                  <h4>
-                    {item.title}
-                  </h4>
+                <p>{item.category}</p>
 
+                <span>
+                  $
+                  {(
+                    item.price -
+                    item.price * item.discount
+                  ).toFixed(2)}
+                </span>
 
-                  <p>
-                    ₹{item.price}
-                  </p>
+              </div>
 
+            </div>
 
-                </div>
-
-              ))
-          }
-
+          ))}
 
         </div>
 
-
       </section>
-
-
 
     </div>
   );
 }
+
 export default GameDetails;
