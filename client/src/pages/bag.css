@@ -1,0 +1,382 @@
+/* ===================================
+   MY BAG
+=================================== */
+
+/* .bag {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  min-height: 100vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 120px 7% 80px;
+  background: #192938;
+  color: #fff;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s ease;
+} */
+ .bag{
+    width:100%;
+    height:auto;
+    background:#192938;
+    color:#fff;
+
+    padding:0 7% 100px;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.5s ease;
+}
+
+.bag.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================= Scrollbar ================= */
+
+.bag::-webkit-scrollbar {
+  width: 8px;
+}
+
+.bag::-webkit-scrollbar-thumb {
+  background: var(--second);
+  border-radius: 20px;
+}
+
+/* ================= Header ================= */
+
+.bag-header {
+  margin-bottom: 45px;
+}
+
+.bag-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.bag-header p {
+  color: #a7b4c7;
+  font-size: 1rem;
+}
+
+/* ================= Table ================= */
+
+.bag-table {
+  width: 100%;
+  background: var(--bgcolor);
+  border-radius: 20px;
+  overflow: visible;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    -5px -5px 15px rgba(255,255,255,.05),
+     5px 5px 20px rgba(0,0,0,.35);
+}
+
+/* ================= Rows ================= */
+
+.bag-row {
+  display: grid;
+
+  grid-template-columns:
+      .5fr
+      1fr
+      2fr
+      1fr
+      1fr
+      1fr
+      .8fr;
+
+  align-items: center;
+
+  padding: 18px 25px;
+
+  transition: .3s;
+}
+
+.bag-row:not(:last-child) {
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.bag-row:hover {
+  background: rgba(255,255,255,.03);
+}
+
+/* ================= Heading ================= */
+
+.bag-heading {
+  background: rgba(255,255,255,.04);
+  font-weight: 700;
+  letter-spacing: .5px;
+  color: #fff;
+}
+
+.bag-heading:hover {
+  background: rgba(255,255,255,.04);
+}
+
+/* ================= Columns ================= */
+
+.bag-index {
+  font-weight: 700;
+  color: var(--second);
+}
+
+/* ================= Preview ================= */
+
+.bag-preview img {
+
+  width: 90px;
+  height: 55px;
+
+  object-fit: cover;
+
+  border-radius: 12px;
+
+  transition: .35s;
+}
+
+.bag-row:hover .bag-preview img {
+  transform: scale(1.05);
+}
+
+/* ================= Title ================= */
+
+.bag-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+/* ================= Price ================= */
+
+.bag-price {
+  color: #d6deeb;
+  font-weight: 500;
+}
+
+/* ================= Discount ================= */
+
+.bag-discount {
+  color: #ff4d4d;
+  font-weight: 700;
+}
+
+/* ================= Payment ================= */
+
+.bag-payment {
+
+  color: var(--second);
+
+  font-weight: 700;
+
+  font-size: 1.05rem;
+}
+
+/* ================= Remove ================= */
+
+.bag-remove button {
+
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  outline: none;
+
+  border-radius: 50%;
+
+  background: rgba(255,255,255,.06);
+
+  color: #fff;
+
+  cursor: pointer;
+
+  transition: .3s;
+}
+
+.bag-remove button:hover {
+
+  background: #ff4040;
+
+  color: #fff;
+
+  transform: rotate(-10deg) scale(1.08);
+}
+
+.bag-remove i {
+  font-size: 1.1rem;
+}
+
+/* ===================================
+   BAG FOOTER
+=================================== */
+
+.bag-footer{
+    margin-top:40px;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+/* Summary Cards */
+
+.bag-total-items,
+.bag-total-price{
+
+    min-width:170px;
+
+    padding:18px 24px;
+
+    background:var(--bgcolor);
+
+    border-radius:18px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    box-shadow:
+        -4px -4px 12px rgba(255,255,255,.05),
+         4px 4px 15px rgba(0,0,0,.35);
+
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.bag-total-items span,
+.bag-total-price span{
+
+    color:#a7b4c7;
+    font-size:.9rem;
+}
+
+.bag-total-items strong,
+.bag-total-price strong{
+
+    font-size:1.6rem;
+    color:#fff;
+}
+
+.bag-total-price strong{
+    color:var(--second);
+}
+
+/* Checkout Button */
+
+.checkout-btn{
+
+    margin-left:auto;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    padding:18px 38px;
+
+    border:none;
+    outline:none;
+
+    border-radius:18px;
+
+    background:var(--second);
+
+    color:#fff;
+
+    font-size:1rem;
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:.35s ease;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.25);
+}
+
+.checkout-btn i{
+    font-size:1.2rem;
+}
+
+.checkout-btn:hover{
+
+    background:var(--primary);
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 18px 30px rgba(0,0,0,.35);
+}
+
+/* ==========================
+   Responsive
+========================== */
+
+@media (max-width:1100px){
+
+    .bag-table{
+
+        overflow-x:auto;
+    }
+
+    .bag-row{
+
+        min-width:900px;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .bag{
+
+        padding:100px 20px 40px;
+    }
+
+    .bag-header h1{
+
+        font-size:2rem;
+    }
+
+    .bag-footer{
+
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .bag-total-items,
+    .bag-total-price{
+
+        width:100%;
+    }
+
+    .checkout-btn{
+
+        width:100%;
+        margin-left:0;
+    }
+
+}
+
+@media (max-width:500px){
+
+    .bag-header h1{
+
+        font-size:1.7rem;
+    }
+
+    .bag-header p{
+
+        font-size:.9rem;
+    }
+
+}
+.bag-footer{
+    margin-bottom:80px;
+}

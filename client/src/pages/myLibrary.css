@@ -1,0 +1,379 @@
+
+ .my-library{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:120px 7% 120px;
+    background:#192938;
+
+    opacity:0;
+    visibility:hidden;
+    transition:.5s;
+}
+.library-card {
+    border-radius: 26px;
+}
+
+.library-card img {
+    border-radius: 26px 26px 0 0;
+}
+/* .library-card {
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+.library-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 45px rgba(0,0,0,.45);
+} */
+
+.my-library.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================= Scrollbar ================= */
+
+.my-library::-webkit-scrollbar {
+  width: 8px;
+}
+
+.my-library::-webkit-scrollbar-thumb {
+  background: #18c3d8;
+  border-radius: 20px;
+}
+
+/* ================= Header ================= */
+
+.library-header {
+  margin-bottom: 50px;
+}
+
+.library-header h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.library-header p {
+  color: #a8b2c7;
+  max-width: 650px;
+  line-height: 1.7;
+  margin-bottom: 35px;
+}
+
+/* ================= Search ================= */
+
+.library-search {
+  position: relative;
+  width: 420px;
+  max-width: 100%;
+}
+
+.library-search input {
+  width: 100%;
+  padding: 15px 20px 15px 52px;
+  border: none;
+  outline: none;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+  font-size: 15px;
+  backdrop-filter: blur(12px);
+  transition: 0.3s;
+}
+
+.library-search input::placeholder {
+  color: #9aa7bf;
+}
+
+.library-search input:focus {
+  border: 1px solid #18c3d8;
+  box-shadow: 0 0 25px rgba(24, 195, 216, 0.35);
+}
+
+.library-search i {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8aa4b3;
+}
+
+/* ================= Titles ================= */
+
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+}
+
+/* ================= Featured Card ================= */
+
+.recent-game {
+  display: flex;
+  gap: 35px;
+  margin-bottom: 70px;
+  padding: 28px;
+  border-radius: 22px;
+  background: #243447;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(15px);
+  transition: 0.4s ease;
+}
+
+.recent-game:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+
+.recent-game img {
+  width: 280px;
+  height: 360px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.recent-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.badge {
+  width: fit-content;
+  padding: 7px 16px;
+  border-radius: 30px;
+  background: #18c3d8;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
+
+.recent-content h2 {
+  font-size: 2.3rem;
+  margin-bottom: 15px;
+}
+
+.recent-content p {
+  color: #b7c4d4;
+  line-height: 1.8;
+  margin: 20px 0 30px;
+  max-width: 720px;
+}
+
+/* ================= Buttons ================= */
+
+.library-buttons {
+  display: flex;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.play-btn,
+.details-btn {
+  padding: 14px 28px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.play-btn {
+  background: #18c3d8;
+  border: none;
+  color: #fff;
+}
+
+.play-btn:hover {
+  background: #24d5ea;
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(24, 195, 216, 0.45);
+}
+
+.details-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.details-btn:hover {
+  border-color: #18c3d8;
+  background: rgba(24, 195, 216, 0.12);
+}
+
+/* ================= Grid ================= */
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 30px;
+}
+
+/* ================= Cards ================= */
+
+/* ================= LIBRARY CARD ================= */
+
+.library-card{
+    position: relative;
+    padding:20px;
+    margin-bottom:25px;
+
+    display:flex;
+    flex-direction:column;
+
+    border:1px solid rgba(255,255,255,.08);
+    border-radius:20px;
+    background:var(--bgcolor);
+
+    box-shadow:
+        -5px -5px 15px rgba(255,255,255,.08),
+         5px 5px 15px rgba(0,0,0,.35);
+
+    overflow:hidden;
+    transition:.35s ease;
+}
+
+.library-card:hover{
+    transform:translateY(-8px);
+
+    box-shadow:
+        -8px -8px 20px rgba(255,255,255,.08),
+         8px 8px 20px rgba(0,0,0,.45);
+}
+
+.library-card img{
+    width:100%;
+    height:170px;
+    object-fit:cover;
+    object-position:center;
+    border-radius:20px;
+    margin-bottom:15px;
+    transition:.4s;
+}
+
+.library-card:hover img{
+    transform:scale(1.05);
+}
+
+.card-content{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+.card-content h4{
+    margin-top:15px;
+    margin-bottom:15px;
+
+    font-size:1.35rem;
+    line-height:1.35;
+    min-height:55px;
+
+    font-family:'Bauhaus 93';
+    text-transform:uppercase;
+    color:#fff;
+
+    transition:.3s;
+}
+
+.library-card:hover h4{
+    color:var(--second);
+}
+
+.installed{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    color:#4ade80;
+
+    margin-top:auto;
+    margin-bottom:18px;
+
+    font-size:.95rem;
+    font-weight:600;
+}
+
+.installed i{
+    font-size:1rem;
+}
+
+.card-content button{
+    width:100%;
+    padding:12px;
+
+    border:none;
+    border-radius:12px;
+
+    background:var(--second);
+    color:#fff;
+
+    font-weight:600;
+    transition:.3s;
+}
+
+.card-content button:hover{
+    background:var(--primary);
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:1.7rem;
+    font-weight:700;
+    margin-bottom:25px;
+}
+
+.section-title i{
+    color:var(--second);
+}
+
+.recent-title{
+    margin-top:70px;
+}
+/* ================= Responsive ================= */
+
+@media (max-width: 992px) {
+  .recent-game {
+    flex-direction: column;
+  }
+
+  .recent-game img {
+    width: 100%;
+    height: 420px;
+  }
+
+  .library-buttons {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 768px) {
+  .my-library {
+    padding: 100px 25px 60px;
+  }
+
+  .library-header h2 {
+    font-size: 2.3rem;
+  }
+
+  .recent-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .recent-game img {
+    height: 320px;
+  }
+
+  .library-grid {
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  }
+}
