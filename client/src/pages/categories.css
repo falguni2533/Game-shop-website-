@@ -1,0 +1,176 @@
+/* ==========================================================
+   CATEGORIES SECTION
+========================================================== */
+
+.categories {
+  padding: 60px 40px;
+  background: #192938;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+/* -------------------- HEADER -------------------- */
+
+.categoriesTop {
+  margin-bottom: 28px;
+}
+
+.categoriesTitle span {
+  color: #2dd4bf;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.categoriesTitle h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin: 8px 0 6px;
+  color: #ffffff;
+}
+
+.categoriesTitle p {
+  color: #8fa3b8;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* -------------------- SEARCH -------------------- */
+
+.categoriesSearch {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #16273c;
+  border: 1px solid #223349;
+  border-radius: 10px;
+  padding: 12px 16px;
+  max-width: 420px;
+  margin: 24px 0 20px;
+}
+
+.categoriesSearch i {
+  color: #8fa3b8;
+  font-size: 16px;
+}
+
+.categoriesSearch input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 14px;
+  width: 100%;
+}
+
+.categoriesSearch input::placeholder {
+  color: #6b8199;
+}
+
+/* -------------------- CATEGORY TABS -------------------- */
+
+.categoryTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.categoryTab {
+  background: #16273c;
+  border: 1px solid #223349;
+  color: #8fa3b8;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.categoryTab:hover {
+  color: #ffffff;
+  border-color: #2dd4bf;
+}
+
+.categoryTab.active {
+  background: #2dd4bf;
+  border-color: #2dd4bf;
+  color: #0d1b2a;
+}
+
+/* -------------------- GAME COUNT -------------------- */
+
+.categoryGameCount {
+  color: #8fa3b8;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.categoryGameCount span {
+  color: #2dd4bf;
+  font-weight: 700;
+}
+
+/* -------------------- GAME GRID -------------------- */
+
+.categoriesGameGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* Your GameCard wraps itself in a Bootstrap col-xl-3/col-lg-4/col-md-6 div.
+   Those classes need a .row flex parent to do anything, and here the grid
+   above is already handling columns — so just neutralize the Bootstrap
+   width/padding on that wrapper so it doesn't fight the grid. */
+.categoriesGameGrid > [class*="col-"] {
+  width: 100%;
+  max-width: 100%;
+  flex: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 1200px) {
+  .categoriesGameGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .categoriesGameGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .categoriesGameGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .categories {
+    padding: 40px 18px;
+  }
+}
+
+/* -------------------- NO GAMES FOUND -------------------- */
+
+.noGames {
+  text-align: center;
+  padding: 80px 20px;
+  color: #8fa3b8;
+}
+
+.noGames i {
+  font-size: 40px;
+  color: #2dd4bf;
+  margin-bottom: 16px;
+  display: inline-block;
+}
+
+.noGames h3 {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
