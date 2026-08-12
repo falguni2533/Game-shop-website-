@@ -21,7 +21,12 @@ app.use(express.json()); //middleware to parse incoming JSON requests
 app.use(express.urlencoded({ extended: true }));
 
 // Enable CORS
-app.use(cors())
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 //enable cookie parser middleware
 app.use(cookieParser());
