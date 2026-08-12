@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./main.css";
 
-
 import SideMenu from "../components/SideMenu";
 import Header from "../components/Header";
 
@@ -10,6 +9,8 @@ import Games from "./Games";
 import Categories from "./Categories";
 import MyLibrary from "./MyLibrary";
 import Bag from "./Bag";
+
+import { getGames } from "../api/gameApi";
 
 function Main() {
   const [active, setActive] = useState(false);
@@ -26,27 +27,27 @@ function Main() {
     {
       name: "home",
       ref: homeRef,
-      active: true,
+      active: activePage === "home",
     },
     {
-       name: "games",
-       ref: gamesRef,
-       active: false,
+      name: "games",
+      ref: gamesRef,
+      active: activePage === "games",
     },
     {
       name: "categories",
       ref: categoriesRef,
-      active: false,
+      active: activePage === "categories",
     },
     {
       name: "bag",
       ref: bagRef,
-      active: false,
+      active: activePage === "bag",
     },
     {
       name: "my-library",
       ref: libraryRef,
-      active: false,
+      active: activePage === "library",
     },
   ];
 
@@ -54,61 +55,75 @@ function Main() {
     setActive(!active);
   };
 
-  const fetchData = () => {
-    fetch("http://localhost:3000/api/games.Data.json")
-      .then((res) => res.json())
-      .then((data) => {
+  const fetchGames = async () => {
+    try {
+      const data = await getGames();
+
+      console.log("Games received from backend:", data);
+
+      // Handles both possible response structures
+      if (Array.isArray(data)) {
         setGames(data);
-      })
-      .catch((e) => console.log(e.message));
+      } else if (Array.isArray(data.games)) {
+        setGames(data.games);
+      } else if (Array.isArray(data.data)) {
+        setGames(data.data);
+      } else {
+        console.error("Unexpected games response:", data);
+        setGames([]);
+      }
+    } catch (error) {
+      console.error("Error fetching games:", error);
+    }
   };
 
   useEffect(() => {
-    fetchData();
+    fetchGames();
   }, []);
 
   return (
     <main>
-      {/* <SideMenu active={active} /> */}
       <SideMenu
-  active={active}
-  activePage={activePage}
-  setActivePage={setActivePage}
-/>
+        active={active}
+        activePage={activePage}
+        setActivePage={setActivePage}
+      />
 
       <div className={`banner ${active ? "active" : ""}`}>
         <Header toggleActive={handleToggleActive} />
 
         <div className="container-fluid">
+
           <Home
-  games={games}
-  reference={homeRef}
-  active={activePage === "home"}
-/>
+            games={games}
+            reference={homeRef}
+            active={activePage === "home"}
+          />
 
-<Games
-  games={games}
-  reference={gamesRef}
-  active={activePage === "games"}
-/>
+          <Games
+            games={games}
+            reference={gamesRef}
+            active={activePage === "games"}
+          />
 
-<Categories
-  games={games}
-  reference={categoriesRef}
-  active={activePage === "categories"}
-/>
+          <Categories
+            games={games}
+            reference={categoriesRef}
+            active={activePage === "categories"}
+          />
 
-<MyLibrary
-  games={games}
-  reference={libraryRef}
-  active={activePage === "library"}
-/>
+          <MyLibrary
+            games={games}
+            reference={libraryRef}
+            active={activePage === "library"}
+          />
 
-<Bag
-  games={games}
-  reference={bagRef}
-  active={activePage === "bag"}
-/>
+          <Bag
+            games={games}
+            reference={bagRef}
+            active={activePage === "bag"}
+          />
+
         </div>
       </div>
     </main>

@@ -1,29 +1,34 @@
-import React ,{useState, useEffect} from 'react'
-import './gameRating.css';
+import React, { useState, useEffect } from "react";
+import "./gameRating.css";
 
-function GameRating({ rating }) {
-    const [stars, setStars] = useState([]);
-     const generateStars = () => {
-        let star = [];
-        if(rating>5 || rating <1){
-            return;
-        }
-        for(let i=0; i<rating; i++){
-            star.push(i);
-        }
-        return star;
-    };
+function GameRating({ rating = 0 }) {
+  const [stars, setStars] = useState([]);
 
-    useEffect(()=>{
-        setStars(generateStars());
-    },[]);
+  const generateStars = () => {
+    const numericRating = Number(rating) || 0;
 
+    // Keep rating between 0 and 5
+    const safeRating = Math.max(0, Math.min(5, numericRating));
 
-  return <div className="gameRating">
-    {stars.map((star, index) =>{
-    return <i key={index} className="bi bi-star-fill"></i>;
-    })}
-  </div>
+    const starCount = Math.floor(safeRating);
+
+    return Array.from({ length: starCount }, (_, index) => index);
+  };
+
+  useEffect(() => {
+    setStars(generateStars());
+  }, [rating]);
+
+  return (
+    <div className="gameRating">
+      {stars.map((star) => (
+        <i
+          key={star}
+          className="bi bi-star-fill"
+        ></i>
+      ))}
+    </div>
+  );
 }
 
-export default GameRating
+export default GameRating;
