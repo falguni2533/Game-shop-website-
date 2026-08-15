@@ -13,7 +13,7 @@ main {
     justify-content: space-between;
     align-items: center;
     gap:30px;
-    overflow: hidden;
+    overflow: hidden; /* hidden */
     transition: 0.5s;
 
 }

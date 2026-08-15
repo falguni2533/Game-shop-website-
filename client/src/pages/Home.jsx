@@ -6,7 +6,7 @@ import GameSwiper from "../components/GameSwiper";
 import GameCard from "../components/GameCard";
 import Footer from "../components/Footer";
 
-function Home({ games, reference, active }) {
+function Home({ games, reference, active, setActivePage }) {
   // Different sections
   const promotionGames = games.slice(0, 4);
 
@@ -42,9 +42,16 @@ function Home({ games, reference, active }) {
           </div>
 
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
-              View More Games <i className="bi bi-arrow-right"></i>
-            </a>
+            <a
+             href="#"
+              className="viewMore"
+              onClick={(e) => {
+                  e.preventDefault();
+                  setActivePage("games");
+                        }}
+                           >
+                     View More Games <i className="bi bi-arrow-right"></i>
+                    </a>
           </div>
         </div>
 
@@ -62,7 +69,14 @@ function Home({ games, reference, active }) {
           </div>
 
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
+            <a
+              href="#"
+              className="viewMore"
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("games");
+              }}
+            >
               View More Games <i className="bi bi-arrow-right"></i>
             </a>
           </div>
@@ -82,7 +96,14 @@ function Home({ games, reference, active }) {
           </div>
 
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
+            <a
+              href="#"
+              className="viewMore"
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("games");
+              }}
+            >
               View More Games <i className="bi bi-arrow-right"></i>
             </a>
           </div>
@@ -102,7 +123,14 @@ function Home({ games, reference, active }) {
           </div>
 
           <div className="col-lg-6 d-flex justify-content-end align-items-center">
-            <a href="#" className="viewMore">
+            <a
+              href="#"
+              className="viewMore"
+              onClick={(e) => {
+                e.preventDefault();
+                setActivePage("games");
+              }}
+            >
               View More Games <i className="bi bi-arrow-right"></i>
             </a>
           </div>

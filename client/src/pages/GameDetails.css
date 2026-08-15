@@ -1,22 +1,26 @@
-/* ===============================
+/* =========================================================
    GAME DETAILS PAGE
-================================= */
+========================================================= */
 
 .game-details {
   min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+
   background: #0b0b12;
   color: #fff;
+
   padding: 40px 70px;
+
   font-family: "Poppins", sans-serif;
 }
 
 
-/* ===============================
+/* =========================================================
    BACK BUTTON
-================================= */
+========================================================= */
 
-.back-btn {
-
+.game-details .back-btn {
   background: transparent;
   border: 1px solid #ff4757;
   color: #ff4757;
@@ -37,29 +41,27 @@
   margin-bottom: 35px;
 }
 
-
-.back-btn:hover {
-
+.game-details .back-btn:hover {
   background: #ff4757;
   color: white;
-
   transform: translateX(-5px);
-
 }
 
 
-
-/* ===============================
+/* =========================================================
    HERO SECTION
-================================= */
+========================================================= */
 
-
-.hero-section {
+.game-details .hero-section {
+  position: relative;
 
   display: grid;
-  grid-template-columns: 45% 55%;
+  grid-template-columns: minmax(0, 45%) minmax(0, 55%);
 
   gap: 40px;
+
+  width: 100%;
+  box-sizing: border-box;
 
   background: linear-gradient(
     145deg,
@@ -72,65 +74,70 @@
   border-radius: 20px;
 
   box-shadow:
-  0 0 30px rgba(255,71,87,0.15);
+    0 0 30px rgba(255, 71, 87, 0.15);
 
+  overflow: hidden;
+
+  opacity: 1;
+  transform: none;
+  height: auto;
+  top: auto;
+  bottom: auto;
+  z-index: 1;
 }
 
 
-
-/* ===============================
+/* =========================================================
    HERO IMAGE
-================================= */
+========================================================= */
 
-
-.hero-image {
-
+.game-details .hero-image {
   width: 100%;
   height: 420px;
 
   overflow: hidden;
 
   border-radius: 18px;
-
 }
 
-
-.hero-image img {
-
+.game-details .hero-image img {
   width: 100%;
   height: 100%;
 
   object-fit: cover;
 
+  display: block;
+
   transition: 0.5s;
-
 }
 
-
-
-.hero-image img:hover {
-
+.game-details .hero-image img:hover {
   transform: scale(1.08);
-
 }
 
 
-
-/* ===============================
+/* =========================================================
    HERO CONTENT
-================================= */
+========================================================= */
 
-
-.hero-content {
-
+.game-details .hero-content {
+  min-width: 0;
   padding: 10px 20px;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 
-.category-badge {
+/* =========================================================
+   CATEGORY
+========================================================= */
 
+.game-details .category-badge {
   display: inline-block;
+
+  width: fit-content;
 
   background: #ff4757;
 
@@ -141,565 +148,783 @@
   font-size: 14px;
 
   margin-bottom: 20px;
-
 }
 
 
+/* =========================================================
+   TITLE
+========================================================= */
 
-.hero-content h1 {
-
+.game-details .hero-content h1 {
   font-size: 45px;
 
-  margin-bottom: 20px;
+  margin: 0 0 20px;
 
   letter-spacing: 1px;
 
+  line-height: 1.2;
 }
 
 
-
-
-
-/* ===============================
+/* =========================================================
    RATING
-================================= */
+========================================================= */
 
-
-.rating-box {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-  margin-bottom:25px;
-
-}
-
-
-.review-text {
-
-  color:#aaa;
-
-  font-size:14px;
-
-}
-
-
-
-
-/* ===============================
-   GAME META
-================================= */
-
-
-.game-meta {
-
-  display:flex;
-
-  gap:20px;
-
-  margin-bottom:25px;
-
-}
-
-
-
-.meta-item {
-
-  background:#20202d;
-
-  padding:15px 25px;
-
-  border-radius:12px;
-
-}
-
-
-
-.meta-item h5 {
-
-  color:#999;
-
-  font-size:13px;
-
-  margin-bottom:8px;
-
-}
-
-
-
-.meta-item p {
-
-  font-size:17px;
-
-  margin:0;
-
-}
-
-
-
-
-
-/* ===============================
-   PRICE SECTION
-================================= */
-
-
-.price-box {
-
-  margin:25px 0;
-
-}
-
-
-
-.price-row {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:15px;
-
-}
-
-
-
-.price-row h2 {
-
-  color:#00ff99;
-
-  font-size:35px;
-
-}
-
-
-
-.old-price {
-
-  color:#888;
-
-  text-decoration:line-through;
-
-  font-size:18px;
-
-}
-
-
-
-.discount-badge {
-
-  background:#ff4757;
-
-  padding:5px 12px;
-
-  border-radius:8px;
-
-  font-size:14px;
-
-}
-
-
-
-
-/* ===============================
-   ACTION BUTTONS
-================================= */
-
-
-.action-buttons {
-
-  display:flex;
-
-  gap:15px;
-
-}
-
-
-
-.action-buttons button {
-
-  border:none;
-
-  padding:14px 25px;
-
-  border-radius:10px;
-
-  font-size:15px;
-
-  cursor:pointer;
-
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  transition:.3s;
-
-}
-
-
-
-
-.cart-btn {
-
-  background:#ff4757;
-
-  color:white;
-
-}
-
-
-
-.buy-btn {
-
-  background:#00ff99;
-
-  color:#111;
-
-}
-
-
-
-.wish-btn {
-
-  background:#222;
-
-  color:#ff4757;
-
-  width:50px;
-
-  justify-content:center;
-
-}
-
-
-
-.action-buttons button:hover {
-
-  transform:translateY(-4px);
-
-  opacity:.9;
-
-}
-
-
-
-
-
-/* ===============================
-   ABOUT GAME
-================================= */
-
-
-.details-card,
-.game-description {
-
-  margin-top:35px;
-
-  background:#151522;
-
-  padding:30px;
-
-  border-radius:18px;
-
-  border:1px solid #222;
-
-}
-
-
-
-.details-card h2,
-.game-description h2 {
-
-  display:flex;
-
-  align-items:center;
-
-  gap:12px;
-
-  color:#ff4757;
-
-  margin-bottom:20px;
-
-}
-
-
-
-.details-card p,
-.game-description p {
-
-  color:#ccc;
-
-  line-height:1.8;
-
-  font-size:16px;
-
-}
-
-/* ===========================
-   GAME DETAILS INFO SECTION
-=========================== */
-
-.game-info {
-  padding: 40px 0;
-  color: #fff;
-}
-
-.game-info h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.game-info p {
-  color: #b8b8b8;
-  line-height: 1.7;
-  font-size: 15px;
-}
-
-
-/* ===========================
-   GAME TAGS
-=========================== */
-
-.game-tags {
+.game-details .rating-box {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 20px 0;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 25px;
 }
 
-.game-tags span {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 8px 16px;
-  border-radius: 20px;
-  color: #fff;
+.game-details .review-text {
+  color: #aaa;
+
   font-size: 14px;
-  transition: 0.3s ease;
-}
-
-.game-tags span:hover {
-  background: #ff4d4d;
-  border-color: #ff4d4d;
-  transform: translateY(-3px);
 }
 
 
-/* ===========================
-   PRICE + BUY BUTTON
-=========================== */
+/* =========================================================
+   GAME META
+========================================================= */
 
-.purchase-box {
-  background: rgba(255,255,255,0.05);
-  border-radius: 15px;
-  padding: 25px;
-  margin-top: 30px;
-  border: 1px solid rgba(255,255,255,0.1);
+.game-details .game-meta {
+  display: flex;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+
+  flex-wrap: wrap;
+}
+
+.game-details .meta-item {
+  background: #20202d;
+
+  padding: 15px 25px;
+
+  border-radius: 12px;
+}
+
+.game-details .meta-item h5 {
+  color: #999;
+
+  font-size: 13px;
+
+  margin: 0 0 8px;
+}
+
+.game-details .meta-item p {
+  font-size: 17px;
+
+  margin: 0;
 }
 
 
-.purchase-price {
-  font-size: 2rem;
-  font-weight: 700;
-  color: #fff;
-  margin-bottom: 20px;
+/* =========================================================
+   PRICE
+========================================================= */
+
+.game-details .price-box {
+  margin: 10px 0 25px;
+}
+
+.game-details .price-row {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  flex-wrap: wrap;
+}
+
+.game-details .price-row h2 {
+  color: #00ff99;
+
+  font-size: 35px;
+
+  margin: 0;
+}
+
+.game-details .old-price {
+  color: #888;
+
+  text-decoration: line-through;
+
+  font-size: 18px;
+}
+
+.game-details .discount-badge {
+  background: #ff4757;
+
+  padding: 5px 12px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
 }
 
 
-.buy-btn {
-  width: 100%;
-  padding: 14px;
+/* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+.game-details .action-buttons {
+  display: flex;
+
+  gap: 15px;
+
+  align-items: center;
+
+  flex-wrap: wrap;
+}
+
+.game-details .action-buttons button {
   border: none;
+
+  padding: 14px 25px;
+
   border-radius: 10px;
+
+  font-size: 15px;
+
+  cursor: pointer;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  transition: 0.3s;
+}
+
+.game-details .cart-btn {
+  background: #ff4757;
+
+  color: white;
+}
+
+.game-details .buy-btn {
   background: linear-gradient(
     135deg,
     #ff512f,
     #dd2476
   );
+
   color: white;
+}
+
+.game-details .wish-btn {
+  background: #222;
+
+  color: #ff4757;
+
+  width: 50px;
+
+  height: 48px;
+
+  padding: 0 !important;
+
+  justify-content: center;
+}
+
+.game-details .action-buttons button:hover {
+  transform: translateY(-4px);
+
+  opacity: 0.9;
+}
+
+
+/* =========================================================
+   ALL GAME DETAILS SECTIONS
+   IMPORTANT:
+   This overrides your global section CSS
+========================================================= */
+
+.game-details section {
+  position: relative !important;
+
+  top: auto !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: 100% !important;
+
+  height: auto !important;
+
+  min-height: 0 !important;
+
+  padding: 0 !important;
+
+  margin-left: 0;
+  margin-right: 0;
+
+  opacity: 1 !important;
+
+  overflow: visible !important;
+
+  transform: none !important;
+
+  z-index: 1 !important;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   ABOUT GAME
+========================================================= */
+
+.game-details .details-card {
+  margin-top: 35px;
+
+  background: #151522;
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
+
+  box-sizing: border-box;
+}
+
+.game-details .details-card h2 {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  color: #ff4757;
+
+  margin: 0 0 20px;
+
+  font-size: 27px;
+}
+
+.game-details .details-card p {
+  color: #ccc;
+
+  line-height: 1.8;
+
   font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
+
+  margin: 0;
 }
 
 
-.buy-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(221,36,118,0.4);
+/* =========================================================
+   FEATURES
+========================================================= */
+
+.game-details .game-features {
+  margin-top: 40px !important;
+
+  padding: 30px !important;
+
+  background: #151522;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
 }
 
+.game-details .game-features h2 {
+  color: #ff4757;
 
-/* ===========================
-   SYSTEM REQUIREMENTS
-=========================== */
+  font-size: 28px;
 
-.requirements {
-  margin-top: 50px;
+  margin: 0 0 25px;
 }
 
+.game-details .feature-grid {
+  display: grid;
 
-.requirements h3 {
-  font-size: 1.8rem;
-  margin-bottom: 25px;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
 }
 
+.game-details .feature-card {
+  background: #20202d;
 
-.requirement-card {
-  background: rgba(255,255,255,0.04);
-  padding: 25px;
+  border: 1px solid #2b2b3b;
+
   border-radius: 15px;
-  border: 1px solid rgba(255,255,255,0.1);
+
+  padding: 25px;
+
+  transition: 0.3s;
+}
+
+.game-details .feature-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #ff4757;
+
+  box-shadow:
+    0 10px 25px rgba(255, 71, 87, 0.12);
+}
+
+.game-details .feature-card i {
+  color: #ff4757;
+
+  font-size: 25px;
+
+  display: block;
+
+  margin-bottom: 15px;
+}
+
+.game-details .feature-card h4 {
+  font-size: 18px;
+
+  margin: 0 0 10px;
+}
+
+.game-details .feature-card p {
+  color: #aaa;
+
+  font-size: 14px;
+
+  line-height: 1.6;
+
+  margin: 0;
 }
 
 
-.requirement-card div {
+/* =========================================================
+   SYSTEM REQUIREMENTS
+========================================================= */
+
+.game-details .requirements {
+  margin-top: 40px !important;
+
+  padding: 30px !important;
+
+  background: #151522;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
+}
+
+.game-details .requirements h2 {
+  color: #ff4757;
+
+  font-size: 28px;
+
+  margin: 0 0 25px;
+}
+
+.game-details .requirement-box {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 25px;
+}
+
+.game-details .requirement-box > div {
+  background: #20202d;
+
+  border-radius: 15px;
+
+  padding: 25px;
+
+  border: 1px solid #2b2b3b;
+}
+
+.game-details .requirement-box h4 {
+  color: white;
+
+  font-size: 20px;
+
+  margin: 0 0 20px;
+}
+
+.game-details .requirement-box p {
+  color: #ccc;
+
+  margin: 10px 0;
+
+  line-height: 1.6;
+
+  font-size: 14px;
+}
+
+.game-details .requirement-box strong {
+  color: #ff4757;
+}
+
+
+/* =========================================================
+   TRAILER
+========================================================= */
+
+.game-details .trailer-section {
+  margin-top: 40px !important;
+
+  padding: 30px !important;
+
+  background: #151522;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
+}
+
+.game-details .trailer-section h2 {
+  color: #ff4757;
+
+  font-size: 28px;
+
+  margin: 0 0 25px;
+}
+
+.game-details .trailer-box {
+  width: 100%;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background: #0e0e17;
+}
+
+.game-details .trailer-box iframe {
+  display: block;
+
+  width: 100%;
+
+  min-height: 450px;
+
+  border: none;
+}
+
+.game-details .no-trailer {
+  min-height: 300px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  justify-content: center;
+
+  align-items: center;
+
+  color: #888;
+}
+
+.game-details .no-trailer i {
+  font-size: 45px;
+
+  color: #ff4757;
+
   margin-bottom: 15px;
 }
 
 
-.requirement-card strong {
-  color: #ff4d4d;
+/* =========================================================
+   REVIEWS
+========================================================= */
+
+.game-details .reviews {
+  margin-top: 40px !important;
+
+  padding: 30px !important;
+
+  background: #151522;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
 }
 
+.game-details .reviews h2 {
+  color: #ff4757;
 
-.requirement-card span {
-  color: #ddd;
+  font-size: 28px;
+
+  margin: 0 0 25px;
 }
 
+.game-details .review-card {
+  background: #20202d;
 
-/* ===========================
-   SCREENSHOTS SECTION
-=========================== */
-
-.screenshots {
-  margin-top: 60px;
-}
-
-
-.screenshots h3 {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 25px;
-}
-
-
-.screenshot-grid {
-  display: grid;
-  grid-template-columns: repeat(3,1fr);
-  gap: 20px;
-}
-
-
-.screenshot-grid img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
   border-radius: 15px;
-  transition: 0.4s ease;
+
+  padding: 20px;
+
+  margin-bottom: 15px;
+
+  border: 1px solid #2b2b3b;
+}
+
+.game-details .review-user {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 15px;
+}
+
+.game-details .review-user img {
+  width: 50px;
+
+  height: 50px;
+
+  border-radius: 50%;
+
+  object-fit: cover;
+}
+
+.game-details .review-user h4 {
+  margin: 0 0 5px;
+
+  font-size: 17px;
+}
+
+.game-details .stars {
+  color: #ffd700;
+
+  letter-spacing: 2px;
+}
+
+.game-details .review-card > p {
+  color: #ccc;
+
+  line-height: 1.7;
+
+  margin: 0;
 }
 
 
-.screenshot-grid img:hover {
-  transform: scale(1.05);
-}
-
-
-/* ===========================
+/* =========================================================
    RELATED GAMES
-=========================== */
+========================================================= */
 
-.related-games {
-  margin-top: 70px;
+.game-details .related-games {
+  margin-top: 40px !important;
+
+  padding: 30px !important;
+
+  background: #151522;
+
+  border-radius: 18px;
+
+  border: 1px solid #222;
+
+  margin-bottom: 40px;
 }
 
+.game-details .related-games h2 {
+  color: #ff4757;
 
-.related-games h3 {
-  color: white;
-  font-size: 2rem;
-  margin-bottom: 30px;
+  font-size: 28px;
+
+  margin: 0 0 25px;
 }
 
-
-.related-grid {
+.game-details .related-grid {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+
+  grid-template-columns: repeat(4, 1fr);
+
   gap: 25px;
 }
 
+.game-details .related-card {
+  background: #20202d;
 
-/* ===========================
-   LOADING SCREEN
-=========================== */
+  border-radius: 15px;
+
+  overflow: hidden;
+
+  border: 1px solid #2b2b3b;
+
+  transition: 0.3s;
+
+  cursor: pointer;
+}
+
+.game-details .related-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #ff4757;
+
+  box-shadow:
+    0 10px 25px rgba(255, 71, 87, 0.15);
+}
+
+.game-details .related-card img {
+  width: 100%;
+
+  height: 200px;
+
+  object-fit: cover;
+
+  display: block;
+}
+
+.game-details .related-card h4 {
+  font-size: 17px;
+
+  margin: 15px 15px 8px;
+}
+
+.game-details .related-card p {
+  color: #00ff99;
+
+  font-size: 16px;
+
+  font-weight: 600;
+
+  margin: 0 15px 15px;
+}
+
+
+/* =========================================================
+   LOADING
+========================================================= */
 
 .game-loading {
   min-height: 70vh;
+
   display: flex;
+
   justify-content: center;
+
   align-items: center;
-  color:white;
+
+  flex-direction: column;
+
+  gap: 20px;
+
+  color: white;
+
   font-size: 22px;
 }
 
-
-/* ===========================
-   RESPONSIVE DESIGN
-=========================== */
-
-@media(max-width:992px){
-
-  .game-hero {
-    flex-direction: column;
-  }
-
-  .game-cover img {
-    width:100%;
-    height:400px;
-  }
-
-
-  .screenshot-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-
-
-  .related-grid {
-    grid-template-columns: repeat(2,1fr);
-  }
-
+.game-loading .back-btn {
+  margin-bottom: 0;
 }
 
 
-@media(max-width:576px){
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
 
-  .game-title {
-    font-size:2rem;
+@media (max-width: 1100px) {
+
+  .game-details {
+    padding: 30px 40px;
   }
 
-
-  .game-cover img {
-    height:300px;
+  .game-details .hero-section {
+    grid-template-columns: 1fr;
   }
 
-
-  .screenshot-grid {
-    grid-template-columns:1fr;
+  .game-details .hero-image {
+    height: 450px;
   }
 
-
-  .related-grid {
-    grid-template-columns:1fr;
+  .game-details .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
+  .game-details .related-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-  .purchase-box {
-    padding:18px;
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+  .game-details {
+    padding: 25px 18px;
   }
 
+  .game-details .hero-section {
+    padding: 20px;
+
+    gap: 25px;
+  }
+
+  .game-details .hero-image {
+    height: 320px;
+  }
+
+  .game-details .hero-content {
+    padding: 0;
+  }
+
+  .game-details .hero-content h1 {
+    font-size: 32px;
+  }
+
+  .game-details .game-meta {
+    gap: 10px;
+  }
+
+  .game-details .meta-item {
+    padding: 12px 18px;
+  }
+
+  .game-details .price-row h2 {
+    font-size: 28px;
+  }
+
+  .game-details .action-buttons {
+    width: 100%;
+  }
+
+  .game-details .action-buttons button {
+    flex: 1;
+  }
+
+  .game-details .wish-btn {
+    flex: 0 0 50px !important;
+  }
+
+  .game-details .details-card,
+  .game-details .game-features,
+  .game-details .requirements,
+  .game-details .trailer-section,
+  .game-details .reviews,
+  .game-details .related-games {
+    padding: 20px !important;
+  }
+
+  .game-details .feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-details .requirement-box {
+    grid-template-columns: 1fr;
+  }
+
+  .game-details .related-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .game-details .trailer-box iframe {
+    min-height: 250px;
+    height: 250px;
+  }
 }

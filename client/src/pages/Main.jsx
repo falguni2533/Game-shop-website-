@@ -97,7 +97,8 @@ function Main() {
           <Home
             games={games}
             reference={homeRef}
-            active={activePage === "home"}
+           active={activePage === "home"}
+           setActivePage={setActivePage}
           />
 
           <Games
