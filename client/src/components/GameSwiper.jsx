@@ -42,12 +42,16 @@ function GameSwiper({games}) {
        { games.map(game => ( 
             <SwiperSlide key={game._id}>
                <div className="gameSlider">
-            <img src={game.img} alt={game.title} />
+            <img src={game.coverImage} alt={game.title} />
               <div className={`video ${active ? 'active' : undefined}`}>
                 <iframe
                   width="520"
                   height="300"
-                  src={game.trailer}
+                  src={
+                            game.trailerUrl
+                            ? game.trailerUrl.replace("watch?v=", "embed/")
+                                      : ""
+                      }
                   title={game.title}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -55,7 +59,7 @@ function GameSwiper({games}) {
                </div>
               <div className="content">
                 <h2>{game.title}</h2>
-                <p>{game.description}</p>
+                <p>{game.fullDescription}</p>
                 <div className="buttons">
                   <a href="#" className="orderBtn">Buy Now</a>
                   <a className={`playBtn ${active ? 'active' : undefined}`} onClick={handleToggleVideo} href="#">
